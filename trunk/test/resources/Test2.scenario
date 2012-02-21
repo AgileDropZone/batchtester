@@ -1,0 +1,26 @@
+# Script à lancer
+script=test\resources\tst2.bat
+# Liste des opérations du cas de test
+# ----------
+# Exemples :
+# ----------
+# ATTENDRE;30;Choix 2
+# -> Attend pendant maximum de 30 seconde l'affichage de "Choix 2"
+#
+# SAISIR;bonjour
+# -> Simule la saisie de "bonjour" par l'utilisateur
+#
+# Note : Toute ligne commençant par un caractère "#" est un commentaire
+#        et les lignes vides sont ignorées
+
+ATTENDRE;2;0 - Sortie
+SAISIR;3
+ATTENDRE;1;choix3
+
+# Sur cette étapes nous nous attendons à un TimeOut
+ATTENDRE;1;0 - Sortie
+SAISIR;1
+
+ATTENDRE;1;0 - Sortie
+SAISIR;0
+
