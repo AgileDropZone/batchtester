@@ -1,0 +1,22 @@
+# Script à lancer
+script=D:\Chris\Dropbox\IC Elo\TstBatch\tst1.bat
+# Liste des opérations du cas de test
+# ----------
+# Exemples :
+# ----------
+# ATTENDRE;30;Choix 2
+# -> Attend pendant maximum de 30 seconde l'affichage de "Choix 2"
+#
+# SAISIR;bonjour
+# -> Simule la saisie de "bonjour" par l'utilisateur
+#
+# Note : Toute ligne commençant par un caractère "#" est un commentaire
+#        et les lignes vides sont ignorées
+
+ATTENDRE;45;0 - Sortie
+SAISIR;3
+
+ATTENDRE;45;choix3
+ATTENDRE;45;0 - Sortie
+SAISIR;0
+
