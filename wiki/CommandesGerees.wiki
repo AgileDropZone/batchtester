@@ -1,0 +1,15 @@
+#summary Liste des commandes gérées par batchtester
+
+= Commandes déjà gérées =
+
+  * `ATTENDRE` Attend pendant un temps donné l'affichage d'une chaîne de caractères
+    * Syntaxe : `ATTENDRE;<Timeout en secondes>;<Chaîne de caractères>`
+    * Exemple : {{{ATTENDRE;30;Choix 2}}}<br>Attend pendant maximum de 30 seconde l'affichage de "Choix 2"
+
+  * `SAISIR` Injecte une chaîne de caractère en ligne de commande _(simule une saisie utilisateur)_
+    * Syntaxe : `SAISIR;<Chaîne de caractères>`
+    * Exemple : {{{SAISIR;bonjour}}}<br>Simule la saisie de "bonjour" par l'utilisateur
+
+= Commandes à venir =
+
+_Cette section sera complétée plus tard._
