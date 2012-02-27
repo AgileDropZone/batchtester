@@ -1,0 +1,31 @@
+# Script à lancer
+script=test\resources\ant.bat -f test\resources\scriptANT.xml
+# Liste des opérations du cas de test
+# ----------
+# Exemples :
+# ----------
+# ATTENDRE;30;Choix 2
+# -> Attend pendant maximum de 30 seconde l'affichage de "Choix 2"
+#
+# SAISIR;bonjour
+# -> Simule la saisie de "bonjour" par l'utilisateur
+#
+# Note : Toute ligne commençant par un caractère "#" est un commentaire
+#        et les lignes vides sont ignorées
+
+ATTENDRE;5;[input]
+
+SAISIR;1
+ATTENDRE;1;choix1
+ATTENDRE;1;[input]
+
+SAISIR;2
+ATTENDRE;2;choix2
+ATTENDRE;1;[input]
+
+SAISIR;3
+ATTENDRE;3;choix3
+ATTENDRE;1;[input]
+
+SAISIR;0
+

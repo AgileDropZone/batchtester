@@ -42,16 +42,13 @@ public class ScenarioPlayer {
             while ((ligneLue = sceanrioReader.readLine()) != null) {
                 ligneATraiter = ligneLue.trim();
                 // On filtre les commentaires et les lignes vides
-                if (ligneATraiter.startsWith("#") || ligneATraiter.isEmpty())
+                if (ligneATraiter.startsWith("#") || ligneATraiter.length() == 0)
                     continue;
 
                 // Identification de la commande/du script à tester
                 if (ligneATraiter.startsWith("script")) {
                     ligneTmp = ligneATraiter.split("=");
-                    commandes = new String[ligneTmp.length - 1];
-                    for (int i = 1; i < ligneTmp.length; i++) {
-                        commandes[i - 1] = ligneTmp[i];
-                    }
+                    commandes = ligneTmp[1].split(" ");
                 } else {
                     // Sinon, il s'agit d'opérations du scénario à traiter dans
                     // l'ordre d'écriture dans le fichier
@@ -146,6 +143,7 @@ public class ScenarioPlayer {
                                 output.write(op.getElement());
                                 output.flush(); // Ne pas oublier le flush
                                                 // après l'écriture !!!
+                                System.out.println("[SAISIE] " + op.getElement());
                             }
                         }
                     } else {

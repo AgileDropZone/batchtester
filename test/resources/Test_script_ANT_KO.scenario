@@ -1,5 +1,5 @@
 # Script à lancer
-script=test\resources\tst2.bat
+script=test\resources\ant.bat -f test\resources\scriptANT.xml
 # Liste des opérations du cas de test
 # ----------
 # Exemples :
@@ -13,14 +13,19 @@ script=test\resources\tst2.bat
 # Note : Toute ligne commençant par un caractère "#" est un commentaire
 #        et les lignes vides sont ignorées
 
-ATTENDRE;2;0 - Sortie
+ATTENDRE;1;[input]
+
+SAISIR;1
+ATTENDRE;1;choix1
+ATTENDRE;1;[input]
+
+SAISIR;2
+ATTENDRE;2;choix2
+ATTENDRE;1;[input]
+
 SAISIR;3
 ATTENDRE;1;choix3
+ATTENDRE;1;[input]
 
-# Sur cette étapes nous nous attendons à un TimeOut
-ATTENDRE;1;0 - Sortie
-SAISIR;1
-
-ATTENDRE;1;0 - Sortie
 SAISIR;0
 

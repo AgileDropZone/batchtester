@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="tst1" default="start" basedir=".">
+
+   <!-- Utilisation de AntContrib (pour les commandes IF) -->
+   <taskdef resource="net/sf/antcontrib/antlib.xml">
+      <classpath>
+         <pathelement location="ant-contrib-1.0b3.jar"/>
+      </classpath>
+   </taskdef>   
+
+   <target name="menu"
+            description="Menu du script" >
+      <var name="test.menu.choix" unset="true"/>
+      <echo message="Test script ANT"/>
+      <echo message=""/>
+      <echo message="1 - Choix 1 : Réponse immédiate"/>
+      <echo message="2 - Choix 2 : Réponse sous 1 seconde"/>
+      <echo message="3 - Choix 3 : Réponse sous 3 secondes"/>
+      <echo message=""/>
+      <echo message="0 - Sortie"/>
+      <input  validargs="0,1,2,3"
+              addproperty="test.menu.choix" />
+
+      <if>
+         <equals arg1="1" arg2="${test.menu.choix}" />
+         <then>
+            <antcall target="choix_1" />
+         </then>
+         
+         <elseif>
+            <equals arg1="2" arg2="${test.menu.choix}" />
+            <then>
+               <antcall target="choix_2" />
+            </then>
+         </elseif>
+     
+         <elseif>
+            <equals arg1="3" arg2="${test.menu.choix}" />
+            <then>
+               <antcall target="choix_3" />
+            </then>
+         </elseif>    
+      </if>
+	</target>
+
+   <target name="start" depends="menu"
+            description="Tâche par défaut du script de test" >
+	</target>
+   
+   <target name="choix_1"
+            description="Tâche de test qui répond immédiatement" >
+      <echo message="choix1"/>
+      <antcall target="menu" />
+	</target>   
+   <target name="choix_2"
+            description="Tâche de test qui répond au bout d'une seconde" > 
+      <sleep seconds="1"/>
+      <echo message="choix2"/>
+      <antcall target="menu" />
+	</target>   
+   <target name="choix_3"
+            description="Tâche de test qui répond au bout de trois secondes" >
+      <sleep seconds="3"/>
+      <echo message="choix3"/>
+      <antcall target="menu" />
+	</target>   
+</project>

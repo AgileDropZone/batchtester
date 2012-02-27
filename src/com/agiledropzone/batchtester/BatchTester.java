@@ -15,7 +15,7 @@ public class BatchTester {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
-        if (args.length == 0 || args[0].isEmpty()) {
+        if (args.length == 0) {
             System.err.println(syntaxe);
             System.exit(1);
         }

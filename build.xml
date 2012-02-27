@@ -1,8 +1,4 @@
-<?xml version="1.0"?>
-<!--
-	$Id:  $
-	$URL: $
--->
+<?xml version="1.0" encoding="ISO-8859-1"?>
 <project name="batchtester" default="compile" basedir=".">
 
 	<property file="user.properties" />
