@@ -1,5 +1,5 @@
 # Script à lancer
-script=D:\Chris\Dropbox\IC Elo\TstBatch\tst1.bat
+script=test\resources\scriptWindows.bat
 # Liste des opérations du cas de test
 # ----------
 # Exemples :
@@ -13,10 +13,18 @@ script=D:\Chris\Dropbox\IC Elo\TstBatch\tst1.bat
 # Note : Toute ligne commençant par un caractère "#" est un commentaire
 #        et les lignes vides sont ignorées
 
-ATTENDRE;45;0 - Sortie
+ATTENDRE;3;0 - Sortie
+
+SAISIR;1
+ATTENDRE;1;choix1
+ATTENDRE;1;0 - Sortie
+
+SAISIR;2
+ATTENDRE;2;choix2
+ATTENDRE;1;0 - Sortie
+
 SAISIR;3
+ATTENDRE;1;choix3
+ATTENDRE;1;0 - Sortie
 
-ATTENDRE;45;choix3
-ATTENDRE;45;0 - Sortie
 SAISIR;0
-

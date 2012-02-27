@@ -11,9 +11,9 @@ public class SimpleTimerTest {
     public void respectDuTimeOut() throws InterruptedException {
         SimpleTimer t1 = new SimpleTimer(Thread.currentThread(), 1, "Mon travail");
         try {
-            System.err.println("Je lance le timer ...");
+            System.out.println("Je lance le timer ...");
             t1.start();
-            System.err.println("Je lance le travail ...");
+            System.out.println("Je lance le travail ...");
             Thread.sleep(700);
 
             t1.reset();
@@ -28,9 +28,9 @@ public class SimpleTimerTest {
     public void depassementDeTimeOut() {
         SimpleTimer t1 = new SimpleTimer(Thread.currentThread(), 1, "Mon travail");
         try {
-            System.err.println("Je lance le timer ...");
+            System.out.println("Je lance le timer ...");
             t1.start();
-            System.err.println("Je lance le travail ...");
+            System.out.println("Je lance le travail ...");
             Thread.sleep(5000);
 
             fail("Nous devrions avoir levé un TimeOut");
