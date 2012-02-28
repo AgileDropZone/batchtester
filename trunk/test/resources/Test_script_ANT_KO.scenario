@@ -1,5 +1,5 @@
 # Script à lancer
-script=test\resources\ant.bat -f test\resources\scriptANT.xml
+script=ant.bat -f test\resources\scriptANT.xml
 # Liste des opérations du cas de test
 # ----------
 # Exemples :
@@ -13,7 +13,8 @@ script=test\resources\ant.bat -f test\resources\scriptANT.xml
 # Note : Toute ligne commençant par un caractère "#" est un commentaire
 #        et les lignes vides sont ignorées
 
-ATTENDRE;1;[input]
+# On laisse dans un premier temps 10 seconde pour s'assurer du temps de lancement de ANT
+ATTENDRE;10;[input]
 
 SAISIR;1
 ATTENDRE;1;choix1

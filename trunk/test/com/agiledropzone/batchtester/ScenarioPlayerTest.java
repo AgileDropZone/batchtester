@@ -28,28 +28,23 @@ public class ScenarioPlayerTest {
         assertEquals(1, exitStatus);
     }
 
-    // Pour le moment, l'interaction avec des scripts ANT ne fonctionne pas
-    // Et je n'ai pas encore identifié pourquoi :-(
-    // 
-    // @Test
-    // public void scriptANT_OK() throws IOException {
-    // System.out.println("\n>>>>>  CAS DE TEST : scriptANT_OK <<<<<\n");
-    //
-    // ScenarioPlayer sReader = new
-    // ScenarioPlayer("test\\resources\\Test_script_ANT_OK.scenario");
-    // int exitStatus = sReader.run();
-    //
-    // assertEquals(0, exitStatus);
-    // }
-    //
-    // @Test
-    // public void scriptANT_Timeout() throws IOException {
-    // System.out.println("\n>>>>>  CAS DE TEST : scriptANT_Timeout <<<<<\n");
-    //
-    // ScenarioPlayer sReader = new
-    // ScenarioPlayer("test\\resources\\Test_script_ANT_OK.scenario");
-    // int exitStatus = sReader.run();
-    //
-    // assertEquals(1, exitStatus);
-    // }
+    @Test
+    public void scriptANT_OK() throws IOException {
+        System.out.println("\n>>>>>  CAS DE TEST : scriptANT_OK <<<<<\n");
+
+        ScenarioPlayer sReader = new ScenarioPlayer("test\\resources\\Test_script_ANT_OK.scenario");
+        int exitStatus = sReader.run();
+
+        assertEquals(0, exitStatus);
+    }
+
+    @Test
+    public void scriptANT_Timeout() throws IOException {
+        System.out.println("\n>>>>>  CAS DE TEST : scriptANT_Timeout <<<<<\n");
+
+        ScenarioPlayer sReader = new ScenarioPlayer("test\\resources\\Test_script_ANT_KO.scenario");
+        int exitStatus = sReader.run();
+
+        assertEquals(1, exitStatus);
+    }
 }
