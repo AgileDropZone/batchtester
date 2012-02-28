@@ -140,7 +140,7 @@ public class ScenarioPlayer {
                                     }
                                     break;
                                 }
-                                output.write(op.getElement());
+                                output.write(op.getElement() + "\n");
                                 output.flush(); // Ne pas oublier le flush
                                                 // après l'écriture !!!
                                 System.out.println("[SAISIE] " + op.getElement());
