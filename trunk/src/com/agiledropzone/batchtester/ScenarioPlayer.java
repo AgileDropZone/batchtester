@@ -18,7 +18,7 @@ import com.agiledropzone.batchtester.tools.SimpleTimer;
 public class ScenarioPlayer {
     private BufferedReader sceanrioReader = null;
     private String[] commandes = null;
-    private List<Operation> operations = new ArrayList<Operation>();
+    private List<Action> actions = new ArrayList<Action>();
 
     /**
      * 
@@ -52,14 +52,7 @@ public class ScenarioPlayer {
                 } else {
                     // Sinon, il s'agit d'opérations du scénario à traiter dans
                     // l'ordre d'écriture dans le fichier
-                    ligneTmp = ligneATraiter.split(";");
-                    Operation op = null;
-                    if ("ATTENDRE".equals(ligneTmp[0])) {
-                        op = new Operation(ligneTmp[0], Integer.parseInt(ligneTmp[1]), ligneTmp[2]);
-                    } else if ("SAISIR".equals(ligneTmp[0])) {
-                        op = new Operation(ligneTmp[0], -1, ligneTmp[1]);
-                    }
-                    operations.add(op);
+                    actions.add(Action.createAction(ligneATraiter));
                 }
             }
         } catch (Exception e) {
@@ -72,8 +65,8 @@ public class ScenarioPlayer {
         return commandes;
     }
 
-    public List<Operation> getOperations() {
-        return operations;
+    public List<Action> getOperations() {
+        return actions;
     }
 
     /**
@@ -97,15 +90,14 @@ public class ScenarioPlayer {
         // On lit ce que nous retourne le process
         String line;
 
-        Iterator<Operation> itOperation = operations.iterator();
+        Iterator<Action> itOperation = actions.iterator();
         if (itOperation.hasNext()) {
-            // Logiquement, la première opération de test est cencée être
-            // une opération d'attente
-            Operation op = itOperation.next();
+            // Logiquement, la première action de test est cencée être
+            // une action d'attente
+            Action action = itOperation.next();
             SimpleTimer timer = null;
-            if (op.getDelai() > 0) {
-                timer = new SimpleTimer(Thread.currentThread(), op.getDelai(), op.getOperation() + " - "
-                        + op.getElement());
+            if (action.getDelai() > 0) {
+                timer = new SimpleTimer(Thread.currentThread(), action.getDelai(), action.getAction() + " - " + action.getElement());
                 timer.start();
             }
             try {
@@ -124,26 +116,25 @@ public class ScenarioPlayer {
 
                         // Nous attendons que la sortie console corresponde à
                         // l'élément que nous devons attendre
-                        if ("ATTENDRE".equals(op.getOperation()) && line.contains(op.getElement())) {
+                        if (ActionEnum.WAITFOR.equals(action.getAction()) && line.contains(action.getElement())) {
                             timer.reset();
 
                             // Nous avons identifé ce que nous attendions
-                            // On récupère toutes les opérations suivantes
+                            // On récupère toutes les actions suivantes
                             // de type saisir
                             while (itOperation.hasNext()) {
-                                op = itOperation.next();
-                                if (!"SAISIR".equals(op.getOperation())) {
-                                    if (op.getDelai() > 0) {
-                                        timer = new SimpleTimer(Thread.currentThread(), op.getDelai(),
-                                                op.getOperation() + " - " + op.getElement());
+                                action = itOperation.next();
+                                if (!ActionEnum.INJECT.equals(action.getAction())) {
+                                    if (action.getDelai() > 0) {
+                                        timer = new SimpleTimer(Thread.currentThread(), action.getDelai(), action.getAction() + " - " + action.getElement());
                                         timer.start();
                                     }
                                     break;
                                 }
-                                output.write(op.getElement() + "\n");
+                                output.write(action.getElement() + "\n");
                                 output.flush(); // Ne pas oublier le flush
                                                 // après l'écriture !!!
-                                System.out.println("[SAISIE] " + op.getElement());
+                                System.out.println("[INJECT] " + action.getElement());
                             }
                         }
                     } else {
