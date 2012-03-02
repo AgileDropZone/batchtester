@@ -93,4 +93,12 @@ public class SimpleTimer extends Thread {
         parentThread.interrupt();
     }
 
+    public String toString() {
+        StringBuilder sb = new StringBuilder("SimpleTimer [operation=");
+        sb.append(operation).append(",");
+        sb.append("length=").append(length).append(",");
+        sb.append("parentThread=").append(parentThread.getName()).append("]");
+
+        return sb.toString();
+    }
 }
