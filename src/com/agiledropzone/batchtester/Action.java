@@ -26,7 +26,7 @@ public class Action {
         if (ActionEnum.WAITFOR.equals(actionScenario)) {
             action = new Action(actionScenario, ligneTmp[2]);
             action.delai = Integer.parseInt(ligneTmp[1]);
-        } else if (ActionEnum.INJECT.equals(actionScenario)) {
+        } else {
             action = new Action(actionScenario, ligneTmp[1]);
         }
         return action;
@@ -39,6 +39,14 @@ public class Action {
             sb.append(", delai [").append(this.delai).append("]");
         }
         return sb.toString();
+    }
+
+    public boolean find(String consoleLine) {
+        return consoleLine.contains(element);
+    }
+
+    public boolean impliqueArret() {
+        return ActionEnum.ERROR.equals(action) || ActionEnum.ERROR_GLOBAL.equals(action);
     }
 
     public ActionEnum getAction() {
