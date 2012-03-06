@@ -1,31 +1,24 @@
 # Script à lancer
 script=test\resources\scriptWindows.bat
-# Liste des opérations du cas de test
-# ----------
-# Exemples :
-# ----------
-# ATTENDRE;30;Choix 2
-# -> Attend pendant maximum de 30 seconde l'affichage de "Choix 2"
-#
-# SAISIR;bonjour
-# -> Simule la saisie de "bonjour" par l'utilisateur
+# Liste des opérations du cas de test.
+# Cf. http://code.google.com/p/batchtester/wiki/CommandesGerees
 #
 # Note : Toute ligne commençant par un caractère "#" est un commentaire
 #        et les lignes vides sont ignorées
 
 ERROR_GLOBAL;AUTRE MESSAGE DE TEST
 
-ATTENDRE;3;0 - Sortie
+WAITFOR;3;0 - Sortie
 
-SAISIR;4
+INJECT;4
 WARNING;SPECIFIQUE
-ATTENDRE;40;0 - Sortie
+WAITFOR;40;0 - Sortie
 
-SAISIR;1
-ATTENDRE;1;choix1
-ATTENDRE;1;0 - Sortie
+INJECT;1
+WAITFOR;1;choix1
+WAITFOR;1;0 - Sortie
 
-SAISIR;5
-ATTENDRE;1;0 - Sortie
+INJECT;5
+WAITFOR;1;0 - Sortie
 
-SAISIR;0
+INJECT;0
