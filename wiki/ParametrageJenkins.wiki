@@ -1,4 +1,4 @@
-Le lancement d'un traitement batch à travers Jenkins est des plus simple.
+Le lancement d'un traitement batch à travers Jenkins _^ou Hudson^_ est des plus simple.
 
 Si nous avons l'arborescence de workspace suivante pour notre job :
   * bin
