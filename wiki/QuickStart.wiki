@@ -13,7 +13,7 @@ A ce niveau, si une documentation a été rédigée sur ledit traitement, elle p
 Avec ces informations, vous pouvez déjà automatiser le déroulement d'un traitement batch interactif et valider le déroulement nominal.
 
 ===Lancement :===
-  # Télécharger le module batchtester.jar http://code.google.com/p/batchtester/downloads/detail?name=batchtester-0.1.alpha1.jar.
+  # Télécharger le module batchtester.jar ici : http://code.google.com/p/batchtester/downloads/list.
   # Pour ne pas avoir à modifier vos commandes de lancement suite à une mise à jour de la version, je vous recommande de renommer le fichier obtenu en `batchtester.jar`.
   # Lancer `java -jar batchtester.jar <nomFichierScenario.scenario>`.
 Voilà. C'est tout ... vous souhaitiez quelque chose de plus compliqué ?
