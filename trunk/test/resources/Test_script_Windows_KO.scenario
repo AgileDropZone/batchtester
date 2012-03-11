@@ -6,18 +6,26 @@ script=test\resources\scriptWindows.bat
 # Note : Toute ligne commençant par un caractère "#" est un commentaire
 #        et les lignes vides sont ignorées
 
+# Attente de l'affichage initial du menu
 WAITFOR;3;0 - Sortie
 
+# 1 - Réponse immédiate : On attend l'affichage de "choix1"
 INJECT;1
 WAITFOR;1;choix1
+INJECT;
 WAITFOR;1;0 - Sortie
 
+# 2 - Réponse sous 1 seconde : On attend l'affichage de "choix2"
 INJECT;2
 WAITFOR;2;choix2
+INJECT;
 WAITFOR;1;0 - Sortie
 
+# 3 - Réponse sous 3 seconde : On attend un TIMEOUT sur l'affichage de "choix3" 
 INJECT;3
 WAITFOR;1;choix3
+INJECT;
 WAITFOR;1;0 - Sortie
 
+# On sort
 INJECT;0

@@ -27,7 +27,14 @@ public class Action {
             action = new Action(actionScenario, ligneTmp[2]);
             action.delai = Integer.parseInt(ligneTmp[1]);
         } else {
-            action = new Action(actionScenario, ligneTmp[1]);
+            // Cas particulier des injections pour lesquelles il faut pouvoir
+            // injecter des chaines vides (un retour chariot pour mettre fin à
+            // une pause)
+            String element = "";
+            if (ligneTmp.length > 1) {
+                element += ligneTmp[1];
+            }
+            action = new Action(actionScenario, element);
         }
         return action;
     }
