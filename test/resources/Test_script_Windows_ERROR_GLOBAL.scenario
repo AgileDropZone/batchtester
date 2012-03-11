@@ -8,17 +8,25 @@ script=test\resources\scriptWindows.bat
 
 ERROR_GLOBAL;AUTRE MESSAGE DE TEST
 
+# Attente de l'affichage initial du menu
 WAITFOR;3;0 - Sortie
 
+# 4 - Affiche un message spécifique
 INJECT;4
 WARNING;SPECIFIQUE
+INJECT;
 WAITFOR;40;0 - Sortie
 
+# 1 - Réponse immédiate : On attend l'affichage de "choix1"
 INJECT;1
 WAITFOR;1;choix1
+INJECT;
 WAITFOR;1;0 - Sortie
 
+# 5 - Affiche un autre message spécifique
 INJECT;5
+INJECT;
 WAITFOR;1;0 - Sortie
 
+# On sort
 INJECT;0

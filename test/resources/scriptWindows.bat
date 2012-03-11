@@ -24,26 +24,31 @@ goto debut
 
 :choix1 
 echo choix1
+pause
 goto debut  
 
 :choix2 
 REM le ping permet de patienter N secondes
 ping 127.0.0.1 -n 1 > NUL
 echo choix2
+pause
 goto debut  
 
 :choix3 
 REM le ping permet de patienter N secondes
 ping 127.0.0.1 -n 3 > NUL
 echo choix3
+pause
 goto debut  
 
 :choix4 
 echo MESSAGE SPECIFIQUE
+pause
 goto debut  
 
 :choix5 
 echo AUTRE MESSAGE DE TEST
+pause
 goto debut  
 
 :fin 
