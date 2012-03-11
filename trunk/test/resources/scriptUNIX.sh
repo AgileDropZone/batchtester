@@ -1,19 +1,28 @@
 #!/bin/bash
 
+pause()
+{
+   echo "Appuyez sur une touche pour continuer..."   
+   read dummy
+}
+
 choix1()
 {
    printf "choix1\n"
+   pause
 }
 
 choix2()
 {
    sleep 1
    printf "choix2\n"
+   pause
 }
 
 choix3() {
    sleep 3
    printf "choix3\n"
+   pause
 }
 
 sortie() {
