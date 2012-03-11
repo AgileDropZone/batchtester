@@ -24,8 +24,4 @@ WAITFOR;1;0 - Sortie
 # 3 - Réponse sous 3 seconde : On attend un TIMEOUT sur l'affichage de "choix3" 
 INJECT;3
 WAITFOR;1;choix3
-INJECT;
-WAITFOR;1;0 - Sortie
-
-# On sort
-INJECT;0
+# A ce niveau, un TIMEOUT est cencé avoir été lévé
