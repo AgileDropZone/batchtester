@@ -2,6 +2,8 @@ package com.agiledropzone.batchtester;
 
 import java.io.IOException;
 
+import com.agiledropzone.batchtester.tools.ScenarioSyntaxException;
+
 /**
  * Classe de lancement de BatchTester. <br>
  * 
@@ -23,11 +25,18 @@ public class BatchTester {
         Thread.currentThread().setName("MAIN");
 
         // On récupère le scenario de test à travers un fichier spécifique
-        ScenarioPlayer sReader = new ScenarioPlayer(args[0]);
-        int exitStatus = sReader.run();
+        ScenarioPlayer sReader;
+        int exitStatus = -1;
+        try {
+            sReader = new ScenarioPlayer(args[0]);
+            exitStatus = sReader.run();
 
-        if (exitStatus == 0)
-            System.out.println("Scénario OK");
+            if (exitStatus == 0)
+                System.out.println("Scénario OK");
+
+        } catch (ScenarioSyntaxException e) {
+            System.err.println(e.getMessage());
+        }
         System.exit(exitStatus);
     }
 }
