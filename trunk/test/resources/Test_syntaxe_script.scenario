@@ -1,0 +1,11 @@
+# Script à lancer
+# Erreur de syntaxe : aucune commande à lancer n'est mentionnée
+script=
+# Liste des opérations du cas de test.
+# Cf. http://code.google.com/p/batchtester/wiki/CommandesGerees
+#
+# Note : Toute ligne commençant par un caractère "#" est un commentaire
+#        et les lignes vides sont ignorées
+
+# Attente de l'affichage initial du menu
+WAITFOR;3;0 - Sortie

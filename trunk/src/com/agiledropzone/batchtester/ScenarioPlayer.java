@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import com.agiledropzone.batchtester.tools.ScenarioSyntaxException;
 import com.agiledropzone.batchtester.tools.SimpleTimer;
 
 /**
@@ -45,22 +46,27 @@ public class ScenarioPlayer {
      * 
      * @param fileName
      *            Fichier décrivant le scénario de test.
+     * @throws ScenarioSyntaxException
      */
-    public ScenarioPlayer(String fileName) {
+    public ScenarioPlayer(String fileName) throws ScenarioSyntaxException {
         traiteFichierScenario(fileName);
     }
 
     /**
      * Lecture d'un scénario de test.
+     * 
+     * @throws ScenarioSyntaxException
      */
-    private void traiteFichierScenario(String fileName) {
+    private void traiteFichierScenario(String fileName) throws ScenarioSyntaxException {
+        String ligneATraiter = "";
+        long ligneScenario = 0;
         try {
             sceanrioReader = new BufferedReader(new FileReader(fileName));
 
             String ligneLue;
-            String ligneATraiter;
             String ligneTmp[];
             while ((ligneLue = sceanrioReader.readLine()) != null) {
+                ligneScenario++;
                 ligneATraiter = ligneLue.trim();
                 // On filtre les commentaires et les lignes vides
                 if (ligneATraiter.startsWith("#") || ligneATraiter.length() == 0)
@@ -68,14 +74,28 @@ public class ScenarioPlayer {
 
                 // Identification de la commande/du script à tester
                 if (ligneATraiter.startsWith("script")) {
+                    // Une ligne de script doit correspondre à un format
+                    // "script=xxxx xxxx"
+                    if (!ligneATraiter.matches("script=.{1,}$"))
+                        throw new ScenarioSyntaxException("La description du script est incorrecte ou vide");
                     ligneTmp = ligneATraiter.split("=");
                     commandes = ligneTmp[1].split(" ");
                 } else {
                     // Sinon, il s'agit d'opérations du scénario à traiter dans
                     // l'ordre d'écriture dans le fichier
+
+                    // Une action doit A MINIMA correspondre à un format
+                    // "ACTION;[xxxx]"
+                    // avec [xxxx] facultatif car la commande INJECT peut être
+                    // vide
+                    if (!ligneATraiter.matches("^.{1,};.*$"))
+                        throw new ScenarioSyntaxException("La description de l'action est incorrecte ou vide");
+
                     actions.add(Action.createAction(ligneATraiter));
                 }
             }
+        } catch (ScenarioSyntaxException e) {
+            throw new ScenarioSyntaxException(ligneScenario, ligneATraiter, e.getMessage());
         } catch (Exception e) {
             sceanrioReader = null;
         }

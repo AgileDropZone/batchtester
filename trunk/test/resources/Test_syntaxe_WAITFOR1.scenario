@@ -1,0 +1,16 @@
+# Script à lancer
+script=test\resources\scriptWindows.bat
+# Liste des opérations du cas de test.
+# Cf. http://code.google.com/p/batchtester/wiki/CommandesGerees
+#
+# Note : Toute ligne commençant par un caractère "#" est un commentaire
+#        et les lignes vides sont ignorées
+
+# Attente de l'affichage initial du menu
+WAITFOR;3;0 - Sortie
+
+# 1 - Réponse immédiate : On attend l'affichage de "choix1"
+INJECT;1
+# Erreur de syntaxe : Manque une durée de timer
+WAITFOR;choix1
+INJECT;
