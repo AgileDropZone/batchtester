@@ -12,19 +12,28 @@ WAITFOR;3;0 - Sortie
 # 1 - Réponse immédiate : On attend l'affichage de "choix1"
 INJECT;1
 WAITFOR;1;choix1
+
+WAITFOR;1;Appuyez sur une touche pour continuer...
 INJECT;
+
 WAITFOR;1;0 - Sortie
 
 # 2 - Réponse sous 1 seconde : On attend l'affichage de "choix2"
 INJECT;2
 WAITFOR;2;choix2
+
+WAITFOR;1;Appuyez sur une touche pour continuer...
 INJECT;
+
 WAITFOR;1;0 - Sortie
 
 # 3 - Réponse sous 3 seconde : On attend l'affichage de "choix3"
 INJECT;3
 WAITFOR;4;choix3
+
+WAITFOR;1;Appuyez sur une touche pour continuer...
 INJECT;
+
 WAITFOR;1;0 - Sortie
 
 # On sort

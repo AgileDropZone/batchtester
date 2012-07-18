@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import com.agiledropzone.batchtester.tools.BufferedReaderWithTimeOut;
 import com.agiledropzone.batchtester.tools.ScenarioSyntaxException;
 import com.agiledropzone.batchtester.tools.SimpleTimer;
 
@@ -157,6 +158,7 @@ public class ScenarioPlayer {
 
         // On récupère de quoi lire ce qui sera écrit par le process
         BufferedReader input = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        BufferedReaderWithTimeOut timeOutInput = new BufferedReaderWithTimeOut(input);
 
         // On récupère de quoi écrire au process
         BufferedWriter output = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
@@ -171,7 +173,7 @@ public class ScenarioPlayer {
             while (actionSynchrone != null) {
 
                 if (input.ready()) {
-                    line = input.readLine();
+                    line = timeOutInput.readLine(1);
                     if (line == null) {
                         break;
                     }

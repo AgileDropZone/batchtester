@@ -13,24 +13,36 @@ WAITFOR;3;0 - Sortie
 
 # 5 - Affiche un autre message spécifique
 INJECT;5
+
+WAITFOR;1;Appuyez sur une touche pour continuer...
 INJECT;
+
 WAITFOR;1;0 - Sortie
 
 # 4 - Affiche un message spécifique
 INJECT;4
 WARNING;SPECIFIQUE
+
+WAITFOR;1;Appuyez sur une touche pour continuer...
 INJECT;
+
 WAITFOR;40;0 - Sortie
 
 # 1 - Réponse immédiate : On attend l'affichage de "choix1"
 INJECT;1
 WAITFOR;1;choix1
+
+WAITFOR;1;Appuyez sur une touche pour continuer...
 INJECT;
+
 WAITFOR;1;0 - Sortie
 
 # 5 - Affiche un autre message spécifique
 INJECT;5
+
+WAITFOR;1;Appuyez sur une touche pour continuer...
 INJECT;
+
 WAITFOR;1;0 - Sortie
 
 # On sort
