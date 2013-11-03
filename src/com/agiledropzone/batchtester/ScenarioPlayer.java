@@ -121,6 +121,12 @@ public class ScenarioPlayer {
             action = itActions.next();
 
             if (ActionEnum.impliqueInjection(action.getAction())) {
+                // Nous tentons de nous assurer (au mieux) que le process sous test peut récupérer la main avant
+                // l'injection afin de garantir (ou d'optimiser les chances) sa capacité à traiter l'élément injecté.
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                }
                 output.write(action.getElement() + "\n");
                 output.flush(); // Ne pas oublier le flush
                                 // après l'écriture !!!
