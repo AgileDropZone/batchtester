@@ -1,0 +1,15 @@
+# Commandes déjà gérées #
+
+|**Commande**|**Description**|**Portée**|
+|:-----------|:--------------|:----------|
+|**`WAITFOR`**|Attend pendant un temps donné l'affichage d'une chaîne de caractères.<br><i>Syntaxe :</i><br><b><code>WAITFOR;&lt;Timeout en secondes&gt;;&lt;Chaîne de caractères&gt;</code></b><br><i>Exemple :</i><br><code>WAITFOR;30;Choix 2</code><br>-> Attend pendant maximum de 30 seconde l'affichage de "Choix 2"<table><thead><th><b>Implique une synchronisation</b></th></thead><tbody>
+<tr><td><b><code>INJECT</code></b></td><td>Injecte une chaîne de caractère en ligne de commande <i>(simule une saisie utilisateur)</i>.<br><i>Syntaxe :</i><br><b><code>INJECT;&lt;Chaîne de caractères&gt;</code></b><br><i>Exemple :</i><br><code>INJECT;bonjour</code><br>-> Simule la saisie de "bonjour" par l'utilisateur</td><td>Action immédiate</td></tr>
+<tr><td><b><code>WARNING</code></b></td><td>Surveille l'apparition d'un signalement. Si la chaîne de caractère à surveiller est affichée dans la console, le traitement se poursuit, et l'apparition du signalement est rapportée en fin de traitement.<br><i>Syntaxe :</i><br><b><code>WARNING;&lt;Chaîne de caractères&gt;</code></b><br><i>Exemple :</i><br><code>WARNING;ORA-</code><br>-> Surveille l'affichage de "ORA-"</td><td>Synchronisation :<br><i>Déclaration -> Prochaine synchronisation</i></td></tr>
+<tr><td><b><code>WARNING_GLOBAL</code></b></td><td>Surveille l'apparition d'un signalement. Si la chaîne de caractère à surveiller est affichée dans la console, le traitement se poursuit, et l'apparition du signalement est rapportée en fin de traitement.<br><i>Syntaxe :</i><br><b><code>WARNING_GLOBAL;&lt;Chaîne de caractères&gt;</code></b><br><i>Exemple :</i><br><code>WARNING_GLOBAL;ORA-</code><br>-> Surveille l'affichage de "ORA-"</td><td>Globale :<br><i>Déclaration -> Fin du traitement</i></td></tr>
+<tr><td><b><code>ERROR</code></b></td><td>Surveille l'apparition d'une erreur. Si la chaîne de caractère à surveiller est affichée dans la console, le traitement est interrompu, et l'apparition de l'erreur est immédiatement rapportée.<br><i>Syntaxe :</i><br><b><code>ERROR;&lt;Chaîne de caractères&gt;</code></b><br><i>Exemple :</i><br><code>ERROR;ORA-</code><br>-> Surveille l'affichage de "ORA-"</td><td>Synchronisation :<br><i>Déclaration -> Prochaine synchronisation</i></td></tr>
+<tr><td><b><code>ERROR_GLOBAL</code></b></td><td>Surveille l'apparition d'une erreur. Si la chaîne de caractère à surveiller est affichée dans la console, le traitement est interrompu, et l'apparition de l'erreur est immédiatement rapportée.<br><i>Syntaxe :</i><br><b><code>ERROR_GLOBAL;&lt;Chaîne de caractères&gt;</code></b><br><i>Exemple :</i><br><code>ERROR_GLOBAL;ORA-</code><br>-> Surveille l'affichage de "ORA-"</td><td>Globale :<br><i>Déclaration -> Fin du traitement</i></td></tr></tbody></table>
+
+
+<h1>Commandes à venir</h1>
+
+<i>Cette section sera complétée plus tard.</i>
